@@ -27,10 +27,15 @@ public class Tarp{
 	}
 	
 	public double ratioOfCrossings(){
+		int crossed = 0;
+		if(hasItCrossed() == true){
+			crossed++;
+		}
+		
 		
 	}
 	
-	private hasItCrossed(Needle newNeedle){
+	private boolean hasItCrossed(Needle newNeedle){
 		Needle test = new Needle(Math.Random(), Math.Random(), Math.Random(), Math.Random(), Tarp t);
 		test = newNeedle;
 		test.leftTip();

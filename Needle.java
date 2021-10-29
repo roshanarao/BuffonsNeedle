@@ -7,9 +7,8 @@ public class Needle{
 	
 	
 	public Needle(double length, double x, double y, double theta, Tarp t){
-		this.length = length;
-		this.xPosition = x;
-		this.yPosition = y;
+		this.length = 1;
+		this.position = Math.random() * t;
 		this.angle = theta;
 		this.tarp = t;
 		needleCount++;
