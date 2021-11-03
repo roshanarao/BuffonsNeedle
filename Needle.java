@@ -8,7 +8,7 @@ public class Needle{
 	
 	public Needle(double length, double x, double y, double theta, Tarp t){
 		this.length = 1;
-		this.position = Math.random() * t;
+		this.position = Math.random() * t.getT();
 		this.angle = theta;
 		this.tarp = t;
 		needleCount++;
@@ -16,15 +16,11 @@ public class Needle{
 	public Needle(double l, Tarp t){
 	//make a random needle of length L on the tarp
 	this.length = 4;
-	this.xPosition = 0;
-	this.yPosition = 0;
-	
 	}
 	
 	public double center(){
-	//return location of the center
-	String center = "(" + "xPosition" +"," + "yPosition" ")";
-	return center;
+		//return location of the center
+		return position;
 	}
 	
 	public double leftTip(){
@@ -34,12 +30,18 @@ public class Needle{
 	}
 	
 	public double rightTip(){
-		return position + distance;
+		double distance2 = length/2 * (Math.cos(angle()));
+		return position + distance2;
 	
 	}
 	
+	public double getLength(){
+		double newLength = length;
+		return newLength;
+		
+	}
+	
 	public double angle(){
-		double angle = theta;
 		return angle;
 		
 	}

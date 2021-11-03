@@ -1,6 +1,8 @@
+import java.util.ArrayList;
+
 public class Tarp{
-	private double t;
-	private double l;
+	public double t;
+	public double l;
 	private ArrayList<Needle> needles;
 	
 	public Tarp(double t, double l){
@@ -10,7 +12,7 @@ public class Tarp{
 	}
 	
 	public void throwNeedle(){
-		needles.add(new Needle(this));
+		needles.add(new Needle(l, this));
 		
 	}
 	
@@ -19,28 +21,32 @@ public class Tarp{
 	}
 	
 	public int numberOfCrossings(){
-	int crossing;
-		if(Needle n: needles.length() == 4){
-			crossing++;
+	int crossing = 0;
+		for(Needle n: needles){
+			if(n.getLength() == 4){
+				crossing++;
+			}
 		}
 		return crossing;
 	}
 	
 	public double ratioOfCrossings(){
 		int crossed = 0;
-		if(hasItCrossed() == true){
+		Tarp tarp = new Tarp(2.0, 3.0);
+		Needle johnny = new Needle(1, 2, 3 , 5, tarp);
+		if (hasItCrossed(johnny)){
 			crossed++;
 		}
-		
+		return crossed;
 		
 	}
 	
-	private boolean hasItCrossed(Needle newNeedle){
-		Needle test = new Needle(Math.Random(), Math.Random(), Math.Random(), Math.Random(), Tarp t);
-		test = newNeedle;
-		test.leftTip();
-		test.rightTip();
-		
+	public boolean hasItCrossed(Needle n){
+		return n.leftTip() < 0 || n.rightTip() > t;	
+	}
+	
+	public double getT(){
+		return t;
 	}
 	
 	
