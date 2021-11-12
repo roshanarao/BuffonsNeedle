@@ -1,52 +1,53 @@
 public class Needle{
-	private final double length;
-	private final double position;
-	private final double angle;
-	private final Tarp tarp;
-	private int needleCount = 0;
-	
-	
-	public Needle(double length, double x, double y, double theta, Tarp t){
-		this.length = 1;
-		this.position = Math.random() * t.getT();
-		this.angle = theta;
-		this.tarp = t;
-		needleCount++;
+	public double length;
+	public double position;
+	public double angle;
+	public Tarp tarp;
+	/** The constructor for the Needle object, that creates a needle that corresponds to a tarp t.
+	 *
+	 * @param t the tarp that the needle takes.
+	 */
+	public Needle(Tarp t){
+	this.length = t.getL();
+	this.tarp = t;
+	position = Math.random()*t.getT();
+	angle = Math.random()*Math.PI - Math.PI/2;
 	}
-	public Needle(double l, Tarp t){
-	//make a random needle of length L on the tarp
-	this.length = 4;
-	}
-	
+	/** Returns the center of the needle.
+	 *
+	 * @return the center.
+	 */
 	public double center(){
-		//return location of the center
 		return position;
 	}
-	
+	/** Returns the position of the left tip of the needle.
+	 *
+	 * @return the difference between position and distance.
+	 */
 	public double leftTip(){
 		double distance = length/2 * (Math.cos(angle()));
 		return position - distance;
-		
 	}
-	
+	/** Returns the position of the right tip of the needle.
+	 *
+	 * @return the sum of position and distance.
+	 */
 	public double rightTip(){
 		double distance2 = length/2 * (Math.cos(angle()));
 		return position + distance2;
-	
 	}
-	
+	/** returns the length of the needle.
+	 *
+	 * @return length.
+	 */
 	public double getLength(){
-		double newLength = length;
-		return newLength;
-		
+		return length;
 	}
-	
+	/** returns the angle of the needle.
+	 *
+	 * @return angle
+	 */
 	public double angle(){
 		return angle;
-		
 	}
-	
-	
-	
-	
 }
